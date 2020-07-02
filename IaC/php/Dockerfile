@@ -1,4 +1,4 @@
-FROM php:7.2.19-fpm-alpine3.9
+FROM php:7.4-fpm
 RUN apk update
 RUN docker-php-ext-configure mysqli --with-mysqli && docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 RUN docker-php-ext-configure pdo --with-pdo && docker-php-ext-install pdo && docker-php-ext-enable pdo

@@ -244,17 +244,21 @@ while ($c < 3000) {
   $md5 = md5($numero);
   $primeira = substr($md5, 0, 2);
   $segunda = substr($md5, 2, 2);
-  // echo md5($numero);
-  // echo '<br/>';
   if (!mkdir('scripts/' . $primeira)) {
     mkdir('scripts/' . $primeira, 777);
   }
   if (!mkdir('scripts/' . $primeira . '/' . $segunda)) {
     mkdir('scripts/' . $primeira . '/' . $segunda, 777);
   }
-  $arquivo = fopen('scripts/' . $primeira . '/' . $segunda . '/'. $md5 . '.xml', 'w');
-  fwrite($arquivo, $xml);
-  fclose($arquivo);
+
+  //using fwrite
+  // $arquivo = fopen('scripts/' . $primeira . '/' . $segunda . '/'. $md5 . '.xml', 'w');
+  // fwrite($arquivo, $xml);
+  // fclose($arquivo);
+
+  //using file_put_contents
+  file_put_contents('scripts/' . $primeira . '/' . $segunda . '/' . $md5 . '.xml', $xml);
+  
   $c++;
 }
 $t2 = microtime(true);
